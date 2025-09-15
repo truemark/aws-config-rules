@@ -109,73 +109,73 @@ Parameters:
   VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts:
     Default: 1020-1025
     Type: String
-  DynamodbAutoscalingEnabledParamMaxProvisionedReadCapacity:
+  DdbAutoMaxRCap:
     Default: ''
     Type: String
-  DynamodbAutoscalingEnabledParamMaxProvisionedWriteCapacity:
+  DdbAutoMaxWCap:
     Default: ''
     Type: String
-  DynamodbAutoscalingEnabledParamMinProvisionedReadCapacity:
+  DdbAutoMinRCap:
     Default: ''
     Type: String
-  DynamodbAutoscalingEnabledParamMinProvisionedWriteCapacity:
+  DdbAutoMinWCap:
     Default: ''
     Type: String
-  DynamodbAutoscalingEnabledParamTargetReadUtilization:
+  DdbAutoTargetRUtil:
     Default: ''
     Type: String
-  DynamodbAutoscalingEnabledParamTargetWriteUtilization:
+  DdbAutoTargetWUtil:
     Default: ''
     Type: String
-  DynamodbTableEncryptedKmsParamKmsKeyArns:
+  DdbKmsKeyArns:
     Default: ''
     Type: String
-  IamPolicyNoStatementsWithFullAccessParamExcludePermissionBoundaryPolicy:
+  IamExcludePermBoundary:
     Default: 'false'
     Type: String
-  KmsCmkNotScheduledForDeletionParamKmsKeyIds:
+  KmsKeyIds:
     Default: ''
     Type: String
-  LambdaInsideVpcParamSubnetIds:
+  LambdaSubnetIds:
     Default: ''
     Type: String
-  NoUnrestrictedRouteToIgwParamRouteTableIds:
+  RouteTableIds:
     Default: ''
     Type: String
-  S3BucketDefaultLockEnabledParamMode:
+  S3LockMode:
     Default: ''
     Type: String
-  S3BucketLevelPublicAccessProhibitedParamExcludedPublicBuckets:
+  S3ExcludedPublicBuckets:
     Default: ''
     Type: String
-  S3BucketLoggingEnabledParamTargetBucket:
+  S3LogTargetBucket:
     Default: ''
     Type: String
-  S3BucketLoggingEnabledParamTargetPrefix:
+  S3LogTargetPrefix:
     Default: ''
     Type: String
-  S3BucketPolicyGranteeCheckParamAwsPrincipals:
+  S3AwsPrincipals:
     Default: ''
     Type: String
-  S3BucketPolicyGranteeCheckParamFederatedUsers:
+  S3FederatedUsers:
     Default: ''
     Type: String
-  S3BucketPolicyGranteeCheckParamIpAddresses:
+  S3IpAddresses:
     Default: ''
     Type: String
-  S3BucketPolicyGranteeCheckParamServicePrincipals:
+  S3ServicePrincipals:
     Default: ''
     Type: String
-  S3BucketPolicyGranteeCheckParamVpcIds:
+  S3VpcIds:
     Default: ''
     Type: String
-  S3BucketReplicationEnabledParamReplicationType:
+  S3ReplicationType:
     Default: ''
     Type: String
-  S3BucketVersioningEnabledParamIsMfaDeleteEnabled:
+  S3MfaDelete:
     Default: ''
     Type: String
-  SnsEncryptedKmsParamKmsKeyIds:
+  SnsKmsKeyIds:
     Default: ''
     Type: String
 
@@ -345,121 +345,29 @@ Conditions:
       - Fn::Equals:
           - ''
           - Ref: VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts
-  dynamodbAutoscalingEnabledParamMaxProvisionedReadCapacity:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: DynamodbAutoscalingEnabledParamMaxProvisionedReadCapacity
-  dynamodbAutoscalingEnabledParamMaxProvisionedWriteCapacity:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: DynamodbAutoscalingEnabledParamMaxProvisionedWriteCapacity
-  dynamodbAutoscalingEnabledParamMinProvisionedReadCapacity:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: DynamodbAutoscalingEnabledParamMinProvisionedReadCapacity
-  dynamodbAutoscalingEnabledParamMinProvisionedWriteCapacity:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: DynamodbAutoscalingEnabledParamMinProvisionedWriteCapacity
-  dynamodbAutoscalingEnabledParamTargetReadUtilization:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: DynamodbAutoscalingEnabledParamTargetReadUtilization
-  dynamodbAutoscalingEnabledParamTargetWriteUtilization:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: DynamodbAutoscalingEnabledParamTargetWriteUtilization
-  dynamodbTableEncryptedKmsParamKmsKeyArns:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: DynamodbTableEncryptedKmsParamKmsKeyArns
-  iamPolicyNoStatementsWithFullAccessParamExcludePermissionBoundaryPolicy:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamPolicyNoStatementsWithFullAccessParamExcludePermissionBoundaryPolicy
-  kmsCmkNotScheduledForDeletionParamKmsKeyIds:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: KmsCmkNotScheduledForDeletionParamKmsKeyIds
-  lambdaInsideVpcParamSubnetIds:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: LambdaInsideVpcParamSubnetIds
-  noUnrestrictedRouteToIgwParamRouteTableIds:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: NoUnrestrictedRouteToIgwParamRouteTableIds
-  s3BucketDefaultLockEnabledParamMode:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketDefaultLockEnabledParamMode
-  s3BucketLevelPublicAccessProhibitedParamExcludedPublicBuckets:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketLevelPublicAccessProhibitedParamExcludedPublicBuckets
-  s3BucketLoggingEnabledParamTargetBucket:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketLoggingEnabledParamTargetBucket
-  s3BucketLoggingEnabledParamTargetPrefix:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketLoggingEnabledParamTargetPrefix
-  s3BucketPolicyGranteeCheckParamAwsPrincipals:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketPolicyGranteeCheckParamAwsPrincipals
-  s3BucketPolicyGranteeCheckParamFederatedUsers:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketPolicyGranteeCheckParamFederatedUsers
-  s3BucketPolicyGranteeCheckParamIpAddresses:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketPolicyGranteeCheckParamIpAddresses
-  s3BucketPolicyGranteeCheckParamServicePrincipals:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketPolicyGranteeCheckParamServicePrincipals
-  s3BucketPolicyGranteeCheckParamVpcIds:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketPolicyGranteeCheckParamVpcIds
-  s3BucketReplicationEnabledParamReplicationType:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketReplicationEnabledParamReplicationType
-  s3BucketVersioningEnabledParamIsMfaDeleteEnabled:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3BucketVersioningEnabledParamIsMfaDeleteEnabled
-  snsEncryptedKmsParamKmsKeyIds:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: SnsEncryptedKmsParamKmsKeyIds
+  ddbAutoMaxRCap: !Not [!Equals ['', !Ref DdbAutoMaxRCap]]
+  ddbAutoMaxWCap: !Not [!Equals ['', !Ref DdbAutoMaxWCap]]
+  ddbAutoMinRCap: !Not [!Equals ['', !Ref DdbAutoMinRCap]]
+  ddbAutoMinWCap: !Not [!Equals ['', !Ref DdbAutoMinWCap]]
+  ddbAutoTargetRUtil: !Not [!Equals ['', !Ref DdbAutoTargetRUtil]]
+  ddbAutoTargetWUtil: !Not [!Equals ['', !Ref DdbAutoTargetWUtil]]
+  ddbKmsKeyArns: !Not [!Equals ['', !Ref DdbKmsKeyArns]]
+  iamExcludePermBoundary: !Not [!Equals ['', !Ref IamExcludePermBoundary]]
+  kmsKeyIds: !Not [!Equals ['', !Ref KmsKeyIds]]
+  lambdaSubnetIds: !Not [!Equals ['', !Ref LambdaSubnetIds]]
+  routeTableIds: !Not [!Equals ['', !Ref RouteTableIds]]
+  s3LockMode: !Not [!Equals ['', !Ref S3LockMode]]
+  s3ExcludedPublicBuckets: !Not [!Equals ['', !Ref S3ExcludedPublicBuckets]]
+  s3LogTargetBucket: !Not [!Equals ['', !Ref S3LogTargetBucket]]
+  s3LogTargetPrefix: !Not [!Equals ['', !Ref S3LogTargetPrefix]]
+  s3AwsPrincipals: !Not [!Equals ['', !Ref S3AwsPrincipals]]
+  s3FederatedUsers: !Not [!Equals ['', !Ref S3FederatedUsers]]
+  s3IpAddresses: !Not [!Equals ['', !Ref S3IpAddresses]]
+  s3ServicePrincipals: !Not [!Equals ['', !Ref S3ServicePrincipals]]
+  s3VpcIds: !Not [!Equals ['', !Ref S3VpcIds]]
+  s3ReplicationType: !Not [!Equals ['', !Ref S3ReplicationType]]
+  s3MfaDelete: !Not [!Equals ['', !Ref S3MfaDelete]]
+  snsKmsKeyIds: !Not [!Equals ['', !Ref SnsKmsKeyIds]]
 
 Resources:
   AcmCertificateExpirationCheck:
@@ -707,36 +615,12 @@ Resources:
     Properties:
       ConfigRuleName: dynamodb-autoscaling-enabled
       InputParameters:
-        maxProvisionedReadCapacity:
-          Fn::If:
-            - dynamodbAutoscalingEnabledParamMaxProvisionedReadCapacity
-            - Ref: DynamodbAutoscalingEnabledParamMaxProvisionedReadCapacity
-            - Ref: AWS::NoValue
-        maxProvisionedWriteCapacity:
-          Fn::If:
-            - dynamodbAutoscalingEnabledParamMaxProvisionedWriteCapacity
-            - Ref: DynamodbAutoscalingEnabledParamMaxProvisionedWriteCapacity
-            - Ref: AWS::NoValue
-        minProvisionedReadCapacity:
-          Fn::If:
-            - dynamodbAutoscalingEnabledParamMinProvisionedReadCapacity
-            - Ref: DynamodbAutoscalingEnabledParamMinProvisionedReadCapacity
-            - Ref: AWS::NoValue
-        minProvisionedWriteCapacity:
-          Fn::If:
-            - dynamodbAutoscalingEnabledParamMinProvisionedWriteCapacity
-            - Ref: DynamodbAutoscalingEnabledParamMinProvisionedWriteCapacity
-            - Ref: AWS::NoValue
-        targetReadUtilization:
-          Fn::If:
-            - dynamodbAutoscalingEnabledParamTargetReadUtilization
-            - Ref: DynamodbAutoscalingEnabledParamTargetReadUtilization
-            - Ref: AWS::NoValue
-        targetWriteUtilization:
-          Fn::If:
-            - dynamodbAutoscalingEnabledParamTargetWriteUtilization
-            - Ref: DynamodbAutoscalingEnabledParamTargetWriteUtilization
-            - Ref: AWS::NoValue
+        maxProvisionedReadCapacity: !If [ddbAutoMaxRCap, !Ref DdbAutoMaxRCap, !Ref 'AWS::NoValue']
+        maxProvisionedWriteCapacity: !If [ddbAutoMaxWCap, !Ref DdbAutoMaxWCap, !Ref 'AWS::NoValue']
+        minProvisionedReadCapacity: !If [ddbAutoMinRCap, !Ref DdbAutoMinRCap, !Ref 'AWS::NoValue']
+        minProvisionedWriteCapacity: !If [ddbAutoMinWCap, !Ref DdbAutoMinWCap, !Ref 'AWS::NoValue']
+        targetReadUtilization: !If [ddbAutoTargetRUtil, !Ref DdbAutoTargetRUtil, !Ref 'AWS::NoValue']
+        targetWriteUtilization: !If [ddbAutoTargetWUtil, !Ref DdbAutoTargetWUtil, !Ref 'AWS::NoValue']
       Scope:
         ComplianceResourceTypes:
           - AWS::DynamoDB::Table
@@ -765,11 +649,7 @@ Resources:
     Properties:
       ConfigRuleName: dynamodb-table-encrypted-kms
       InputParameters:
-        kmsKeyArns:
-          Fn::If:
-            - dynamodbTableEncryptedKmsParamKmsKeyArns
-            - Ref: DynamodbTableEncryptedKmsParamKmsKeyArns
-            - Ref: AWS::NoValue
+        kmsKeyArns: !If [ddbKmsKeyArns, !Ref DdbKmsKeyArns, !Ref 'AWS::NoValue']
       Scope:
         ComplianceResourceTypes:
           - AWS::DynamoDB::Table
@@ -1223,11 +1103,7 @@ Resources:
     Properties:
       ConfigRuleName: iam-policy-no-statements-with-full-access
       InputParameters:
-        excludePermissionBoundaryPolicy:
-          Fn::If:
-            - iamPolicyNoStatementsWithFullAccessParamExcludePermissionBoundaryPolicy
-            - Ref: IamPolicyNoStatementsWithFullAccessParamExcludePermissionBoundaryPolicy
-            - Ref: AWS::NoValue
+        excludePermissionBoundaryPolicy: !If [iamExcludePermBoundary, !Ref IamExcludePermBoundary, !Ref 'AWS::NoValue']
       Scope:
         ComplianceResourceTypes:
           - AWS::IAM::Policy
