@@ -327,7 +327,7 @@ Resources:
     Properties:
       ConfigRuleName: cloudwatch-log-group-encrypted
       InputParameters:
-        kmsKeyId: !If [cloudwatchLogGroupEncryptedParamKmsKeyId, !Ref CloudwatchLogGroupEncryptedParamKmsKeyId, !Ref 'AWS::NoValue']
+        KmsKeyId: !If [cloudwatchLogGroupEncryptedParamKmsKeyId, !Ref CloudwatchLogGroupEncryptedParamKmsKeyId, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_LOG_GROUP_ENCRYPTED
