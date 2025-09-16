@@ -1,13 +1,4 @@
-##################################################################################
-#
-#   Conformance Pack:
-#     Operational Best Practices for NIST 800-171
-#
-#   This conformance pack helps verify compliance with NIST 800-171 requirements.
-#
-#   See Parameters section for names and descriptions of required parameters.
-#
-##################################################################################
+# NIST 800-171 Conformance Pack
 
 Parameters:
   AcmCertificateExpirationCheckParamDaysToExpiration:
@@ -133,19 +124,10 @@ Parameters:
   IamExcludePermBoundary:
     Default: 'false'
     Type: String
-  KmsKeyIds:
-    Default: ''
-    Type: String
   LambdaSubnetIds:
     Default: ''
     Type: String
   RouteTableIds:
-    Default: ''
-    Type: String
-  S3LockMode:
-    Default: ''
-    Type: String
-  S3ExcludedPublicBuckets:
     Default: ''
     Type: String
   S3LogTargetBucket:
@@ -157,194 +139,39 @@ Parameters:
   S3AwsPrincipals:
     Default: ''
     Type: String
-  S3FederatedUsers:
-    Default: ''
-    Type: String
-  S3IpAddresses:
-    Default: ''
-    Type: String
-  S3ServicePrincipals:
-    Default: ''
-    Type: String
-  S3VpcIds:
-    Default: ''
-    Type: String
   S3ReplicationType:
-    Default: ''
-    Type: String
-  S3MfaDelete:
-    Default: ''
-    Type: String
-  SnsKmsKeyIds:
     Default: ''
     Type: String
 
 Conditions:
-  acmCertificateExpirationCheckParamDaysToExpiration:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: AcmCertificateExpirationCheckParamDaysToExpiration
-  guarddutyEnabledCentralizedParamCentralMonitoringAccount:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: GuarddutyEnabledCentralizedParamCentralMonitoringAccount
-  cloudtrailS3DataeventsEnabledParamS3BucketNames:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: CloudtrailS3DataeventsEnabledParamS3BucketNames
-  cloudwatchAlarmActionCheckParamInsufficientDataActionRequired:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: CloudwatchAlarmActionCheckParamInsufficientDataActionRequired
-  cloudwatchAlarmActionCheckParamOkActionRequired:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: CloudwatchAlarmActionCheckParamOkActionRequired
-  cloudwatchLogGroupEncryptedParamKmsKeyId:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: CloudwatchLogGroupEncryptedParamKmsKeyId
-  cwLoggroupRetentionPeriodCheckParamMinRetentionTime:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: CwLoggroupRetentionPeriodCheckParamMinRetentionTime
-  cwLoggroupRetentionPeriodCheckParamLogGroupNames:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: CwLoggroupRetentionPeriodCheckParamLogGroupNames
-  ec2VolumeInuseCheckParamDeleteOnTermination:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: Ec2VolumeInuseCheckParamDeleteOnTermination
-  guarddutyNonArchivedFindingsParamDaysHighSev:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: GuarddutyNonArchivedFindingsParamDaysHighSev
-  guarddutyNonArchivedFindingsParamDaysLowSev:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: GuarddutyNonArchivedFindingsParamDaysLowSev
-  guarddutyNonArchivedFindingsParamDaysMediumSev:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: GuarddutyNonArchivedFindingsParamDaysMediumSev
-  iamPasswordPolicyParamMaxPasswordAge:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamPasswordPolicyParamMaxPasswordAge
-  iamPasswordPolicyParamMinimumPasswordLength:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamPasswordPolicyParamMinimumPasswordLength
-  iamPasswordPolicyParamPasswordReusePrevention:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamPasswordPolicyParamPasswordReusePrevention
-  iamPasswordPolicyParamRequireLowercaseCharacters:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamPasswordPolicyParamRequireLowercaseCharacters
-  iamPasswordPolicyParamRequireNumbers:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamPasswordPolicyParamRequireNumbers
-  iamPasswordPolicyParamRequireSymbols:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamPasswordPolicyParamRequireSymbols
-  iamPasswordPolicyParamRequireUppercaseCharacters:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamPasswordPolicyParamRequireUppercaseCharacters
-  iamUserUnusedCredentialsCheckParamMaxCredentialUsageAge:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: IamUserUnusedCredentialsCheckParamMaxCredentialUsageAge
-  internetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: InternetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds
-  redshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: RedshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade
-  restrictedIncomingTrafficParamBlockedPort1:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: RestrictedIncomingTrafficParamBlockedPort1
-  restrictedIncomingTrafficParamBlockedPort2:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: RestrictedIncomingTrafficParamBlockedPort2
-  restrictedIncomingTrafficParamBlockedPort3:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: RestrictedIncomingTrafficParamBlockedPort3
-  restrictedIncomingTrafficParamBlockedPort4:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: RestrictedIncomingTrafficParamBlockedPort4
-  restrictedIncomingTrafficParamBlockedPort5:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: RestrictedIncomingTrafficParamBlockedPort5
-  s3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicAcls:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicAcls
-  s3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicPolicy:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicPolicy
-  s3AccountLevelPublicAccessBlocksPeriodicParamIgnorePublicAcls:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3AccountLevelPublicAccessBlocksPeriodicParamIgnorePublicAcls
-  s3AccountLevelPublicAccessBlocksPeriodicParamRestrictPublicBuckets:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: S3AccountLevelPublicAccessBlocksPeriodicParamRestrictPublicBuckets
-  vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
-  vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts:
-    Fn::Not:
-      - Fn::Equals:
-          - ''
-          - Ref: VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts
+  cloudtrailS3DataeventsEnabledParamS3BucketNames: !Not [!Equals ['', !Ref CloudtrailS3DataeventsEnabledParamS3BucketNames]]
+  cloudwatchLogGroupEncryptedParamKmsKeyId: !Not [!Equals ['', !Ref CloudwatchLogGroupEncryptedParamKmsKeyId]]
+  cwLoggroupRetentionPeriodCheckParamLogGroupNames: !Not [!Equals ['', !Ref CwLoggroupRetentionPeriodCheckParamLogGroupNames]]
+  ec2VolumeInuseCheckParamDeleteOnTermination: !Not [!Equals ['', !Ref Ec2VolumeInuseCheckParamDeleteOnTermination]]
+  guarddutyNonArchivedFindingsParamDaysHighSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysHighSev]]
+  guarddutyNonArchivedFindingsParamDaysLowSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysLowSev]]
+  guarddutyNonArchivedFindingsParamDaysMediumSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysMediumSev]]
+  iamPasswordPolicyParamMaxPasswordAge: !Not [!Equals ['', !Ref IamPasswordPolicyParamMaxPasswordAge]]
+  iamPasswordPolicyParamMinimumPasswordLength: !Not [!Equals ['', !Ref IamPasswordPolicyParamMinimumPasswordLength]]
+  iamPasswordPolicyParamPasswordReusePrevention: !Not [!Equals ['', !Ref IamPasswordPolicyParamPasswordReusePrevention]]
+  iamPasswordPolicyParamRequireLowercaseCharacters: !Not [!Equals ['', !Ref IamPasswordPolicyParamRequireLowercaseCharacters]]
+  iamPasswordPolicyParamRequireNumbers: !Not [!Equals ['', !Ref IamPasswordPolicyParamRequireNumbers]]
+  iamPasswordPolicyParamRequireSymbols: !Not [!Equals ['', !Ref IamPasswordPolicyParamRequireSymbols]]
+  iamPasswordPolicyParamRequireUppercaseCharacters: !Not [!Equals ['', !Ref IamPasswordPolicyParamRequireUppercaseCharacters]]
+  iamUserUnusedCredentialsCheckParamMaxCredentialUsageAge: !Not [!Equals ['', !Ref IamUserUnusedCredentialsCheckParamMaxCredentialUsageAge]]
+  internetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds: !Not [!Equals ['', !Ref InternetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds]]
+  redshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade: !Not [!Equals ['', !Ref RedshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade]]
+  restrictedIncomingTrafficParamBlockedPort1: !Not [!Equals ['', !Ref RestrictedIncomingTrafficParamBlockedPort1]]
+  restrictedIncomingTrafficParamBlockedPort2: !Not [!Equals ['', !Ref RestrictedIncomingTrafficParamBlockedPort2]]
+  restrictedIncomingTrafficParamBlockedPort3: !Not [!Equals ['', !Ref RestrictedIncomingTrafficParamBlockedPort3]]
+  restrictedIncomingTrafficParamBlockedPort4: !Not [!Equals ['', !Ref RestrictedIncomingTrafficParamBlockedPort4]]
+  restrictedIncomingTrafficParamBlockedPort5: !Not [!Equals ['', !Ref RestrictedIncomingTrafficParamBlockedPort5]]
+  s3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicAcls: !Not [!Equals ['', !Ref S3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicAcls]]
+  s3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicPolicy: !Not [!Equals ['', !Ref S3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicPolicy]]
+  s3AccountLevelPublicAccessBlocksPeriodicParamIgnorePublicAcls: !Not [!Equals ['', !Ref S3AccountLevelPublicAccessBlocksPeriodicParamIgnorePublicAcls]]
+  s3AccountLevelPublicAccessBlocksPeriodicParamRestrictPublicBuckets: !Not [!Equals ['', !Ref S3AccountLevelPublicAccessBlocksPeriodicParamRestrictPublicBuckets]]
+  vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts: !Not [!Equals ['', !Ref VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts]]
+  vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts: !Not [!Equals ['', !Ref VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts]]
   ddbAutoMaxRCap: !Not [!Equals ['', !Ref DdbAutoMaxRCap]]
   ddbAutoMaxWCap: !Not [!Equals ['', !Ref DdbAutoMaxWCap]]
   ddbAutoMinRCap: !Not [!Equals ['', !Ref DdbAutoMinRCap]]
@@ -353,35 +180,21 @@ Conditions:
   ddbAutoTargetWUtil: !Not [!Equals ['', !Ref DdbAutoTargetWUtil]]
   ddbKmsKeyArns: !Not [!Equals ['', !Ref DdbKmsKeyArns]]
   iamExcludePermBoundary: !Not [!Equals ['', !Ref IamExcludePermBoundary]]
-  kmsKeyIds: !Not [!Equals ['', !Ref KmsKeyIds]]
   lambdaSubnetIds: !Not [!Equals ['', !Ref LambdaSubnetIds]]
   routeTableIds: !Not [!Equals ['', !Ref RouteTableIds]]
-  s3LockMode: !Not [!Equals ['', !Ref S3LockMode]]
-  s3ExcludedPublicBuckets: !Not [!Equals ['', !Ref S3ExcludedPublicBuckets]]
   s3LogTargetBucket: !Not [!Equals ['', !Ref S3LogTargetBucket]]
   s3LogTargetPrefix: !Not [!Equals ['', !Ref S3LogTargetPrefix]]
   s3AwsPrincipals: !Not [!Equals ['', !Ref S3AwsPrincipals]]
-  s3FederatedUsers: !Not [!Equals ['', !Ref S3FederatedUsers]]
-  s3IpAddresses: !Not [!Equals ['', !Ref S3IpAddresses]]
-  s3ServicePrincipals: !Not [!Equals ['', !Ref S3ServicePrincipals]]
-  s3VpcIds: !Not [!Equals ['', !Ref S3VpcIds]]
   s3ReplicationType: !Not [!Equals ['', !Ref S3ReplicationType]]
-  s3MfaDelete: !Not [!Equals ['', !Ref S3MfaDelete]]
-  snsKmsKeyIds: !Not [!Equals ['', !Ref SnsKmsKeyIds]]
 
 Resources:
   AcmCertificateExpirationCheck:
     Properties:
       ConfigRuleName: acm-certificate-expiration-check
       InputParameters:
-        daysToExpiration:
-          Fn::If:
-            - acmCertificateExpirationCheckParamDaysToExpiration
-            - Ref: AcmCertificateExpirationCheckParamDaysToExpiration
-            - Ref: AWS::NoValue
+        daysToExpiration: !Ref AcmCertificateExpirationCheckParamDaysToExpiration
       Scope:
-        ComplianceResourceTypes:
-          - AWS::ACM::Certificate
+        ComplianceResourceTypes: [AWS::ACM::Certificate]
       Source:
         Owner: AWS
         SourceIdentifier: ACM_CERTIFICATE_EXPIRATION_CHECK
@@ -397,8 +210,7 @@ Resources:
     Properties:
       ConfigRuleName: alb-waf-enabled
       Scope:
-        ComplianceResourceTypes:
-          - AWS::ElasticLoadBalancingV2::LoadBalancer
+        ComplianceResourceTypes: [AWS::ElasticLoadBalancingV2::LoadBalancer]
       Source:
         Owner: AWS
         SourceIdentifier: ALB_WAF_ENABLED
@@ -407,8 +219,7 @@ Resources:
     Properties:
       ConfigRuleName: api-gw-associated-with-waf
       Scope:
-        ComplianceResourceTypes:
-          - AWS::ApiGateway::Stage
+        ComplianceResourceTypes: [AWS::ApiGateway::Stage]
       Source:
         Owner: AWS
         SourceIdentifier: API_GW_ASSOCIATED_WITH_WAF
@@ -417,8 +228,7 @@ Resources:
     Properties:
       ConfigRuleName: api-gw-cache-enabled-and-encrypted
       Scope:
-        ComplianceResourceTypes:
-          - AWS::ApiGateway::Stage
+        ComplianceResourceTypes: [AWS::ApiGateway::Stage]
       Source:
         Owner: AWS
         SourceIdentifier: API_GW_CACHE_ENABLED_AND_ENCRYPTED
@@ -427,9 +237,7 @@ Resources:
     Properties:
       ConfigRuleName: api-gw-execution-logging-enabled
       Scope:
-        ComplianceResourceTypes:
-          - AWS::ApiGateway::Stage
-          - AWS::ApiGatewayV2::Stage
+        ComplianceResourceTypes: [AWS::ApiGateway::Stage, AWS::ApiGatewayV2::Stage]
       Source:
         Owner: AWS
         SourceIdentifier: API_GW_EXECUTION_LOGGING_ENABLED
@@ -438,8 +246,7 @@ Resources:
     Properties:
       ConfigRuleName: api-gw-ssl-enabled
       Scope:
-        ComplianceResourceTypes:
-          - AWS::ApiGateway::Stage
+        ComplianceResourceTypes: [AWS::ApiGateway::Stage]
       Source:
         Owner: AWS
         SourceIdentifier: API_GW_SSL_ENABLED
@@ -448,8 +255,7 @@ Resources:
     Properties:
       ConfigRuleName: autoscaling-group-elb-healthcheck-required
       Scope:
-        ComplianceResourceTypes:
-          - AWS::AutoScaling::AutoScalingGroup
+        ComplianceResourceTypes: [AWS::AutoScaling::AutoScalingGroup]
       Source:
         Owner: AWS
         SourceIdentifier: AUTOSCALING_GROUP_ELB_HEALTHCHECK_REQUIRED
@@ -458,8 +264,7 @@ Resources:
     Properties:
       ConfigRuleName: autoscaling-launch-config-public-ip-disabled
       Scope:
-        ComplianceResourceTypes:
-          - AWS::AutoScaling::LaunchConfiguration
+        ComplianceResourceTypes: [AWS::AutoScaling::LaunchConfiguration]
       Source:
         Owner: AWS
         SourceIdentifier: AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED
@@ -496,11 +301,7 @@ Resources:
     Properties:
       ConfigRuleName: cloudtrail-s3-dataevents-enabled
       InputParameters:
-        S3BucketNames:
-          Fn::If:
-            - cloudtrailS3DataeventsEnabledParamS3BucketNames
-            - Ref: CloudtrailS3DataeventsEnabledParamS3BucketNames
-            - Ref: AWS::NoValue
+        S3BucketNames: !If [cloudtrailS3DataeventsEnabledParamS3BucketNames, !Ref CloudtrailS3DataeventsEnabledParamS3BucketNames, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: CLOUDTRAIL_S3_DATAEVENTS_ENABLED
@@ -517,19 +318,10 @@ Resources:
       ConfigRuleName: cloudwatch-alarm-action-check
       InputParameters:
         alarmActionRequired: 'TRUE'
-        insufficientDataActionRequired:
-          Fn::If:
-            - cloudwatchAlarmActionCheckParamInsufficientDataActionRequired
-            - Ref: CloudwatchAlarmActionCheckParamInsufficientDataActionRequired
-            - Ref: AWS::NoValue
-        okActionRequired:
-          Fn::If:
-            - cloudwatchAlarmActionCheckParamOkActionRequired
-            - Ref: CloudwatchAlarmActionCheckParamOkActionRequired
-            - Ref: AWS::NoValue
+        insufficientDataActionRequired: !Ref CloudwatchAlarmActionCheckParamInsufficientDataActionRequired
+        okActionRequired: !Ref CloudwatchAlarmActionCheckParamOkActionRequired
       Scope:
-        ComplianceResourceTypes:
-          - AWS::CloudWatch::Alarm
+        ComplianceResourceTypes: [AWS::CloudWatch::Alarm]
       Source:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_ALARM_ACTION_CHECK
@@ -538,11 +330,7 @@ Resources:
     Properties:
       ConfigRuleName: cloudwatch-log-group-encrypted
       InputParameters:
-        kmsKeyId:
-          Fn::If:
-            - cloudwatchLogGroupEncryptedParamKmsKeyId
-            - Ref: CloudwatchLogGroupEncryptedParamKmsKeyId
-            - Ref: AWS::NoValue
+        kmsKeyId: !If [cloudwatchLogGroupEncryptedParamKmsKeyId, !Ref CloudwatchLogGroupEncryptedParamKmsKeyId, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_LOG_GROUP_ENCRYPTED
@@ -578,16 +366,8 @@ Resources:
     Properties:
       ConfigRuleName: cw-loggroup-retention-period-check
       InputParameters:
-        minRetentionTime:
-          Fn::If:
-            - cwLoggroupRetentionPeriodCheckParamMinRetentionTime
-            - Ref: CwLoggroupRetentionPeriodCheckParamMinRetentionTime
-            - Ref: AWS::NoValue
-        logGroupNames:
-          Fn::If:
-            - cwLoggroupRetentionPeriodCheckParamLogGroupNames
-            - Ref: CwLoggroupRetentionPeriodCheckParamLogGroupNames
-            - Ref: AWS::NoValue
+        minRetentionTime: !Ref CwLoggroupRetentionPeriodCheckParamMinRetentionTime
+        logGroupNames: !If [cwLoggroupRetentionPeriodCheckParamLogGroupNames, !Ref CwLoggroupRetentionPeriodCheckParamLogGroupNames, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: CW_LOGGROUP_RETENTION_PERIOD_CHECK
@@ -767,14 +547,9 @@ Resources:
     Properties:
       ConfigRuleName: ec2-volume-inuse-check
       InputParameters:
-        deleteOnTermination:
-          Fn::If:
-            - ec2VolumeInuseCheckParamDeleteOnTermination
-            - Ref: Ec2VolumeInuseCheckParamDeleteOnTermination
-            - Ref: AWS::NoValue
+        deleteOnTermination: !If [ec2VolumeInuseCheckParamDeleteOnTermination, !Ref Ec2VolumeInuseCheckParamDeleteOnTermination, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::EC2::Volume
+        ComplianceResourceTypes: [AWS::EC2::Volume]
       Source:
         Owner: AWS
         SourceIdentifier: EC2_VOLUME_INUSE_CHECK
@@ -992,11 +767,7 @@ Resources:
     Properties:
       ConfigRuleName: guardduty-enabled-centralized
       InputParameters:
-        CentralMonitoringAccount:
-          Fn::If:
-            - guarddutyEnabledCentralizedParamCentralMonitoringAccount
-            - Ref: GuarddutyEnabledCentralizedParamCentralMonitoringAccount
-            - Ref: AWS::NoValue
+        CentralMonitoringAccount: !Ref GuarddutyEnabledCentralizedParamCentralMonitoringAccount
       Source:
         Owner: AWS
         SourceIdentifier: GUARDDUTY_ENABLED_CENTRALIZED
@@ -1005,21 +776,9 @@ Resources:
     Properties:
       ConfigRuleName: guardduty-non-archived-findings
       InputParameters:
-        daysHighSev:
-          Fn::If:
-            - guarddutyNonArchivedFindingsParamDaysHighSev
-            - Ref: GuarddutyNonArchivedFindingsParamDaysHighSev
-            - Ref: AWS::NoValue
-        daysLowSev:
-          Fn::If:
-            - guarddutyNonArchivedFindingsParamDaysLowSev
-            - Ref: GuarddutyNonArchivedFindingsParamDaysLowSev
-            - Ref: AWS::NoValue
-        daysMediumSev:
-          Fn::If:
-            - guarddutyNonArchivedFindingsParamDaysMediumSev
-            - Ref: GuarddutyNonArchivedFindingsParamDaysMediumSev
-            - Ref: AWS::NoValue
+        daysHighSev: !If [guarddutyNonArchivedFindingsParamDaysHighSev, !Ref GuarddutyNonArchivedFindingsParamDaysHighSev, !Ref 'AWS::NoValue']
+        daysLowSev: !If [guarddutyNonArchivedFindingsParamDaysLowSev, !Ref GuarddutyNonArchivedFindingsParamDaysLowSev, !Ref 'AWS::NoValue']
+        daysMediumSev: !If [guarddutyNonArchivedFindingsParamDaysMediumSev, !Ref GuarddutyNonArchivedFindingsParamDaysMediumSev, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: GUARDDUTY_NON_ARCHIVED_FINDINGS
@@ -1050,41 +809,13 @@ Resources:
     Properties:
       ConfigRuleName: iam-password-policy
       InputParameters:
-        MaxPasswordAge:
-          Fn::If:
-            - iamPasswordPolicyParamMaxPasswordAge
-            - Ref: IamPasswordPolicyParamMaxPasswordAge
-            - Ref: AWS::NoValue
-        MinimumPasswordLength:
-          Fn::If:
-            - iamPasswordPolicyParamMinimumPasswordLength
-            - Ref: IamPasswordPolicyParamMinimumPasswordLength
-            - Ref: AWS::NoValue
-        PasswordReusePrevention:
-          Fn::If:
-            - iamPasswordPolicyParamPasswordReusePrevention
-            - Ref: IamPasswordPolicyParamPasswordReusePrevention
-            - Ref: AWS::NoValue
-        RequireLowercaseCharacters:
-          Fn::If:
-            - iamPasswordPolicyParamRequireLowercaseCharacters
-            - Ref: IamPasswordPolicyParamRequireLowercaseCharacters
-            - Ref: AWS::NoValue
-        RequireNumbers:
-          Fn::If:
-            - iamPasswordPolicyParamRequireNumbers
-            - Ref: IamPasswordPolicyParamRequireNumbers
-            - Ref: AWS::NoValue
-        RequireSymbols:
-          Fn::If:
-            - iamPasswordPolicyParamRequireSymbols
-            - Ref: IamPasswordPolicyParamRequireSymbols
-            - Ref: AWS::NoValue
-        RequireUppercaseCharacters:
-          Fn::If:
-            - iamPasswordPolicyParamRequireUppercaseCharacters
-            - Ref: IamPasswordPolicyParamRequireUppercaseCharacters
-            - Ref: AWS::NoValue
+        MaxPasswordAge: !If [iamPasswordPolicyParamMaxPasswordAge, !Ref IamPasswordPolicyParamMaxPasswordAge, !Ref 'AWS::NoValue']
+        MinimumPasswordLength: !If [iamPasswordPolicyParamMinimumPasswordLength, !Ref IamPasswordPolicyParamMinimumPasswordLength, !Ref 'AWS::NoValue']
+        PasswordReusePrevention: !If [iamPasswordPolicyParamPasswordReusePrevention, !Ref IamPasswordPolicyParamPasswordReusePrevention, !Ref 'AWS::NoValue']
+        RequireLowercaseCharacters: !If [iamPasswordPolicyParamRequireLowercaseCharacters, !Ref IamPasswordPolicyParamRequireLowercaseCharacters, !Ref 'AWS::NoValue']
+        RequireNumbers: !If [iamPasswordPolicyParamRequireNumbers, !Ref IamPasswordPolicyParamRequireNumbers, !Ref 'AWS::NoValue']
+        RequireSymbols: !If [iamPasswordPolicyParamRequireSymbols, !Ref IamPasswordPolicyParamRequireSymbols, !Ref 'AWS::NoValue']
+        RequireUppercaseCharacters: !If [iamPasswordPolicyParamRequireUppercaseCharacters, !Ref IamPasswordPolicyParamRequireUppercaseCharacters, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: IAM_PASSWORD_POLICY
@@ -1149,11 +880,7 @@ Resources:
     Properties:
       ConfigRuleName: iam-user-unused-credentials-check
       InputParameters:
-        maxCredentialUsageAge:
-          Fn::If:
-            - iamUserUnusedCredentialsCheckParamMaxCredentialUsageAge
-            - Ref: IamUserUnusedCredentialsCheckParamMaxCredentialUsageAge
-            - Ref: AWS::NoValue
+        maxCredentialUsageAge: !If [iamUserUnusedCredentialsCheckParamMaxCredentialUsageAge, !Ref IamUserUnusedCredentialsCheckParamMaxCredentialUsageAge, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: IAM_USER_UNUSED_CREDENTIALS_CHECK
@@ -1182,30 +909,18 @@ Resources:
     Properties:
       ConfigRuleName: internet-gateway-authorized-vpc-only
       Scope:
-        ComplianceResourceTypes:
-          - AWS::EC2::InternetGateway
+        ComplianceResourceTypes: [AWS::EC2::InternetGateway]
       Source:
         Owner: AWS
         SourceIdentifier: INTERNET_GATEWAY_AUTHORIZED_VPC_ONLY
       InputParameters:
-        AuthorizedVpcIds:
-          Fn::If:
-            - internetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds
-            - Ref: InternetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds
-            - Ref: AWS::NoValue
+        AuthorizedVpcIds: !If [internetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds, !Ref InternetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds, !Ref 'AWS::NoValue']
     Type: AWS::Config::ConfigRule
   KmsCmkNotScheduledForDeletion:
     Properties:
       ConfigRuleName: kms-cmk-not-scheduled-for-deletion
-      InputParameters:
-        kmsKeyIds:
-          Fn::If:
-            - kmsCmkNotScheduledForDeletionParamKmsKeyIds
-            - Ref: KmsCmkNotScheduledForDeletionParamKmsKeyIds
-            - Ref: AWS::NoValue
       Scope:
-        ComplianceResourceTypes:
-          - AWS::KMS::Key
+        ComplianceResourceTypes: [AWS::KMS::Key]
       Source:
         Owner: AWS
         SourceIdentifier: KMS_CMK_NOT_SCHEDULED_FOR_DELETION
@@ -1224,14 +939,9 @@ Resources:
     Properties:
       ConfigRuleName: lambda-inside-vpc
       InputParameters:
-        subnetIds:
-          Fn::If:
-            - lambdaInsideVpcParamSubnetIds
-            - Ref: LambdaInsideVpcParamSubnetIds
-            - Ref: AWS::NoValue
+        subnetIds: !If [lambdaSubnetIds, !Ref LambdaSubnetIds, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::Lambda::Function
+        ComplianceResourceTypes: [AWS::Lambda::Function]
       Source:
         Owner: AWS
         SourceIdentifier: LAMBDA_INSIDE_VPC
@@ -1254,14 +964,9 @@ Resources:
     Properties:
       ConfigRuleName: no-unrestricted-route-to-igw
       InputParameters:
-        routeTableIds:
-          Fn::If:
-            - noUnrestrictedRouteToIgwParamRouteTableIds
-            - Ref: NoUnrestrictedRouteToIgwParamRouteTableIds
-            - Ref: AWS::NoValue
+        routeTableIds: !If [routeTableIds, !Ref RouteTableIds, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::EC2::RouteTable
+        ComplianceResourceTypes: [AWS::EC2::RouteTable]
       Source:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
@@ -1442,14 +1147,9 @@ Resources:
     Properties:
       ConfigRuleName: redshift-cluster-maintenancesettings-check
       InputParameters:
-        allowVersionUpgrade:
-          Fn::If:
-            - redshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade
-            - Ref: RedshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade
-            - Ref: AWS::NoValue
+        allowVersionUpgrade: !If [redshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade, !Ref RedshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::Redshift::Cluster
+        ComplianceResourceTypes: [AWS::Redshift::Cluster]
       Source:
         Owner: AWS
         SourceIdentifier: REDSHIFT_CLUSTER_MAINTENANCESETTINGS_CHECK
@@ -1488,34 +1188,13 @@ Resources:
     Properties:
       ConfigRuleName: restricted-common-ports
       InputParameters:
-        blockedPort1:
-          Fn::If:
-            - restrictedIncomingTrafficParamBlockedPort1
-            - Ref: RestrictedIncomingTrafficParamBlockedPort1
-            - Ref: AWS::NoValue
-        blockedPort2:
-          Fn::If:
-            - restrictedIncomingTrafficParamBlockedPort2
-            - Ref: RestrictedIncomingTrafficParamBlockedPort2
-            - Ref: AWS::NoValue
-        blockedPort3:
-          Fn::If:
-            - restrictedIncomingTrafficParamBlockedPort3
-            - Ref: RestrictedIncomingTrafficParamBlockedPort3
-            - Ref: AWS::NoValue
-        blockedPort4:
-          Fn::If:
-            - restrictedIncomingTrafficParamBlockedPort4
-            - Ref: RestrictedIncomingTrafficParamBlockedPort4
-            - Ref: AWS::NoValue
-        blockedPort5:
-          Fn::If:
-            - restrictedIncomingTrafficParamBlockedPort5
-            - Ref: RestrictedIncomingTrafficParamBlockedPort5
-            - Ref: AWS::NoValue
+        blockedPort1: !If [restrictedIncomingTrafficParamBlockedPort1, !Ref RestrictedIncomingTrafficParamBlockedPort1, !Ref 'AWS::NoValue']
+        blockedPort2: !If [restrictedIncomingTrafficParamBlockedPort2, !Ref RestrictedIncomingTrafficParamBlockedPort2, !Ref 'AWS::NoValue']
+        blockedPort3: !If [restrictedIncomingTrafficParamBlockedPort3, !Ref RestrictedIncomingTrafficParamBlockedPort3, !Ref 'AWS::NoValue']
+        blockedPort4: !If [restrictedIncomingTrafficParamBlockedPort4, !Ref RestrictedIncomingTrafficParamBlockedPort4, !Ref 'AWS::NoValue']
+        blockedPort5: !If [restrictedIncomingTrafficParamBlockedPort5, !Ref RestrictedIncomingTrafficParamBlockedPort5, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::EC2::SecurityGroup
+        ComplianceResourceTypes: [AWS::EC2::SecurityGroup]
       Source:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
@@ -1538,26 +1217,10 @@ Resources:
     Properties:
       ConfigRuleName: s3-account-level-public-access-blocks-periodic
       InputParameters:
-        BlockPublicAcls:
-          Fn::If:
-            - s3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicAcls
-            - Ref: S3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicAcls
-            - Ref: AWS::NoValue
-        BlockPublicPolicy:
-          Fn::If:
-            - s3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicPolicy
-            - Ref: S3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicPolicy
-            - Ref: AWS::NoValue
-        IgnorePublicAcls:
-          Fn::If:
-            - s3AccountLevelPublicAccessBlocksPeriodicParamIgnorePublicAcls
-            - Ref: S3AccountLevelPublicAccessBlocksPeriodicParamIgnorePublicAcls
-            - Ref: AWS::NoValue
-        RestrictPublicBuckets:
-          Fn::If:
-            - s3AccountLevelPublicAccessBlocksPeriodicParamRestrictPublicBuckets
-            - Ref: S3AccountLevelPublicAccessBlocksPeriodicParamRestrictPublicBuckets
-            - Ref: AWS::NoValue
+        BlockPublicAcls: !If [s3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicAcls, !Ref S3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicAcls, !Ref 'AWS::NoValue']
+        BlockPublicPolicy: !If [s3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicPolicy, !Ref S3AccountLevelPublicAccessBlocksPeriodicParamBlockPublicPolicy, !Ref 'AWS::NoValue']
+        IgnorePublicAcls: !If [s3AccountLevelPublicAccessBlocksPeriodicParamIgnorePublicAcls, !Ref S3AccountLevelPublicAccessBlocksPeriodicParamIgnorePublicAcls, !Ref 'AWS::NoValue']
+        RestrictPublicBuckets: !If [s3AccountLevelPublicAccessBlocksPeriodicParamRestrictPublicBuckets, !Ref S3AccountLevelPublicAccessBlocksPeriodicParamRestrictPublicBuckets, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: S3_ACCOUNT_LEVEL_PUBLIC_ACCESS_BLOCKS_PERIODIC
@@ -1565,12 +1228,6 @@ Resources:
   S3BucketDefaultLockEnabled:
     Properties:
       ConfigRuleName: s3-bucket-default-lock-enabled
-      InputParameters:
-        mode:
-          Fn::If:
-            - s3BucketDefaultLockEnabledParamMode
-            - Ref: S3BucketDefaultLockEnabledParamMode
-            - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
           - AWS::S3::Bucket
@@ -1581,12 +1238,6 @@ Resources:
   S3BucketLevelPublicAccessProhibited:
     Properties:
       ConfigRuleName: s3-bucket-level-public-access-prohibited
-      InputParameters:
-        excludedPublicBuckets:
-          Fn::If:
-            - s3BucketLevelPublicAccessProhibitedParamExcludedPublicBuckets
-            - Ref: S3BucketLevelPublicAccessProhibitedParamExcludedPublicBuckets
-            - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
           - AWS::S3::Bucket
@@ -1598,19 +1249,10 @@ Resources:
     Properties:
       ConfigRuleName: s3-bucket-logging-enabled
       InputParameters:
-        targetBucket:
-          Fn::If:
-            - s3BucketLoggingEnabledParamTargetBucket
-            - Ref: S3BucketLoggingEnabledParamTargetBucket
-            - Ref: AWS::NoValue
-        targetPrefix:
-          Fn::If:
-            - s3BucketLoggingEnabledParamTargetPrefix
-            - Ref: S3BucketLoggingEnabledParamTargetPrefix
-            - Ref: AWS::NoValue
+        targetBucket: !If [s3LogTargetBucket, !Ref S3LogTargetBucket, !Ref 'AWS::NoValue']
+        targetPrefix: !If [s3LogTargetPrefix, !Ref S3LogTargetPrefix, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::S3::Bucket
+        ComplianceResourceTypes: [AWS::S3::Bucket]
       Source:
         Owner: AWS
         SourceIdentifier: S3_BUCKET_LOGGING_ENABLED
@@ -1619,34 +1261,9 @@ Resources:
     Properties:
       ConfigRuleName: s3-bucket-policy-grantee-check
       InputParameters:
-        awsPrincipals:
-          Fn::If:
-            - s3BucketPolicyGranteeCheckParamAwsPrincipals
-            - Ref: S3BucketPolicyGranteeCheckParamAwsPrincipals
-            - Ref: AWS::NoValue
-        federatedUsers:
-          Fn::If:
-            - s3BucketPolicyGranteeCheckParamFederatedUsers
-            - Ref: S3BucketPolicyGranteeCheckParamFederatedUsers
-            - Ref: AWS::NoValue
-        ipAddresses:
-          Fn::If:
-            - s3BucketPolicyGranteeCheckParamIpAddresses
-            - Ref: S3BucketPolicyGranteeCheckParamIpAddresses
-            - Ref: AWS::NoValue
-        servicePrincipals:
-          Fn::If:
-            - s3BucketPolicyGranteeCheckParamServicePrincipals
-            - Ref: S3BucketPolicyGranteeCheckParamServicePrincipals
-            - Ref: AWS::NoValue
-        vpcIds:
-          Fn::If:
-            - s3BucketPolicyGranteeCheckParamVpcIds
-            - Ref: S3BucketPolicyGranteeCheckParamVpcIds
-            - Ref: AWS::NoValue
+        awsPrincipals: !If [s3AwsPrincipals, !Ref S3AwsPrincipals, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::S3::Bucket
+        ComplianceResourceTypes: [AWS::S3::Bucket]
       Source:
         Owner: AWS
         SourceIdentifier: S3_BUCKET_POLICY_GRANTEE_CHECK
@@ -1675,14 +1292,9 @@ Resources:
     Properties:
       ConfigRuleName: s3-bucket-replication-enabled
       InputParameters:
-        ReplicationType:
-          Fn::If:
-            - s3BucketReplicationEnabledParamReplicationType
-            - Ref: S3BucketReplicationEnabledParamReplicationType
-            - Ref: AWS::NoValue
+        ReplicationType: !If [s3ReplicationType, !Ref S3ReplicationType, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::S3::Bucket
+        ComplianceResourceTypes: [AWS::S3::Bucket]
       Source:
         Owner: AWS
         SourceIdentifier: S3_BUCKET_REPLICATION_ENABLED
@@ -1710,12 +1322,6 @@ Resources:
   S3BucketVersioningEnabled:
     Properties:
       ConfigRuleName: s3-bucket-versioning-enabled
-      InputParameters:
-        isMfaDeleteEnabled:
-          Fn::If:
-            - s3BucketVersioningEnabledParamIsMfaDeleteEnabled
-            - Ref: S3BucketVersioningEnabledParamIsMfaDeleteEnabled
-            - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
           - AWS::S3::Bucket
@@ -1754,12 +1360,6 @@ Resources:
   SnsEncryptedKms:
     Properties:
       ConfigRuleName: sns-encrypted-kms
-      InputParameters:
-        kmsKeyIds:
-          Fn::If:
-            - snsEncryptedKmsParamKmsKeyIds
-            - Ref: SnsEncryptedKmsParamKmsKeyIds
-            - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
           - AWS::SNS::Topic
@@ -1805,19 +1405,10 @@ Resources:
     Properties:
       ConfigRuleName: vpc-sg-open-only-to-authorized-ports
       InputParameters:
-        authorizedTcpPorts:
-          Fn::If:
-            - vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
-            - Ref: VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
-            - Ref: AWS::NoValue
-        authorizedUdpPorts:
-          Fn::If:
-            - vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts
-            - Ref: VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts
-            - Ref: AWS::NoValue
+        authorizedTcpPorts: !If [vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts, !Ref VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts, !Ref 'AWS::NoValue']
+        authorizedUdpPorts: !If [vpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts, !Ref VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts, !Ref 'AWS::NoValue']
       Scope:
-        ComplianceResourceTypes:
-          - AWS::EC2::SecurityGroup
+        ComplianceResourceTypes: [AWS::EC2::SecurityGroup]
       Source:
         Owner: AWS
         SourceIdentifier: VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS
