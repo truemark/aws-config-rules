@@ -363,8 +363,8 @@ Resources:
     Properties:
       ConfigRuleName: cw-loggroup-retention-period-check
       InputParameters:
-        minRetentionTime: !If [cwLoggroupRetentionPeriodCheckParamMinRetentionTime, !Ref CwLoggroupRetentionPeriodCheckParamMinRetentionTime, !Ref 'AWS::NoValue']
-        logGroupNames: !If [cwLoggroupRetentionPeriodCheckParamLogGroupNames, !Ref CwLoggroupRetentionPeriodCheckParamLogGroupNames, !Ref 'AWS::NoValue']
+        MinRetentionTime: !If [cwLoggroupRetentionPeriodCheckParamMinRetentionTime, !Ref CwLoggroupRetentionPeriodCheckParamMinRetentionTime, !Ref 'AWS::NoValue']
+        LogGroupNames: !If [cwLoggroupRetentionPeriodCheckParamLogGroupNames, !Ref CwLoggroupRetentionPeriodCheckParamLogGroupNames, !Ref 'AWS::NoValue']
       Source:
         Owner: AWS
         SourceIdentifier: CW_LOGGROUP_RETENTION_PERIOD_CHECK
