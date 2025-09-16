@@ -148,9 +148,6 @@ Conditions:
   cloudwatchLogGroupEncryptedParamKmsKeyId: !Not [!Equals ['', !Ref CloudwatchLogGroupEncryptedParamKmsKeyId]]
   cwLoggroupRetentionPeriodCheckParamMinRetentionTime: !Not [!Equals ['', !Ref CwLoggroupRetentionPeriodCheckParamMinRetentionTime]]
   cwLoggroupRetentionPeriodCheckParamLogGroupNames: !Not [!Equals ['', !Ref CwLoggroupRetentionPeriodCheckParamLogGroupNames]]
-  guarddutyNonArchivedFindingsParamDaysHighSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysHighSev]]
-  guarddutyNonArchivedFindingsParamDaysLowSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysLowSev]]
-  guarddutyNonArchivedFindingsParamDaysMediumSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysMediumSev]]
   iamPasswordPolicyParamMaxPasswordAge: !Not [!Equals ['', !Ref IamPasswordPolicyParamMaxPasswordAge]]
   iamPasswordPolicyParamMinimumPasswordLength: !Not [!Equals ['', !Ref IamPasswordPolicyParamMinimumPasswordLength]]
   iamPasswordPolicyParamPasswordReusePrevention: !Not [!Equals ['', !Ref IamPasswordPolicyParamPasswordReusePrevention]]
@@ -776,9 +773,9 @@ Resources:
     Properties:
       ConfigRuleName: guardduty-non-archived-findings
       InputParameters:
-        daysHighSev: !If [guarddutyNonArchivedFindingsParamDaysHighSev, !Ref GuarddutyNonArchivedFindingsParamDaysHighSev, !Ref 'AWS::NoValue']
-        daysLowSev: !If [guarddutyNonArchivedFindingsParamDaysLowSev, !Ref GuarddutyNonArchivedFindingsParamDaysLowSev, !Ref 'AWS::NoValue']
-        daysMediumSev: !If [guarddutyNonArchivedFindingsParamDaysMediumSev, !Ref GuarddutyNonArchivedFindingsParamDaysMediumSev, !Ref 'AWS::NoValue']
+        daysHighSev: !Ref GuarddutyNonArchivedFindingsParamDaysHighSev
+        daysLowSev: !Ref GuarddutyNonArchivedFindingsParamDaysLowSev
+        daysMediumSev: !Ref GuarddutyNonArchivedFindingsParamDaysMediumSev
       Source:
         Owner: AWS
         SourceIdentifier: GUARDDUTY_NON_ARCHIVED_FINDINGS
