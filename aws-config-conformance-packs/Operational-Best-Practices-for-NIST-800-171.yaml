@@ -148,7 +148,6 @@ Conditions:
   cloudwatchLogGroupEncryptedParamKmsKeyId: !Not [!Equals ['', !Ref CloudwatchLogGroupEncryptedParamKmsKeyId]]
   cwLoggroupRetentionPeriodCheckParamMinRetentionTime: !Not [!Equals ['', !Ref CwLoggroupRetentionPeriodCheckParamMinRetentionTime]]
   cwLoggroupRetentionPeriodCheckParamLogGroupNames: !Not [!Equals ['', !Ref CwLoggroupRetentionPeriodCheckParamLogGroupNames]]
-  ec2VolumeInuseCheckParamDeleteOnTermination: !Not [!Equals ['', !Ref Ec2VolumeInuseCheckParamDeleteOnTermination]]
   guarddutyNonArchivedFindingsParamDaysHighSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysHighSev]]
   guarddutyNonArchivedFindingsParamDaysLowSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysLowSev]]
   guarddutyNonArchivedFindingsParamDaysMediumSev: !Not [!Equals ['', !Ref GuarddutyNonArchivedFindingsParamDaysMediumSev]]
@@ -548,7 +547,7 @@ Resources:
     Properties:
       ConfigRuleName: ec2-volume-inuse-check
       InputParameters:
-        deleteOnTermination: !If [ec2VolumeInuseCheckParamDeleteOnTermination, !Ref Ec2VolumeInuseCheckParamDeleteOnTermination, !Ref 'AWS::NoValue']
+        deleteOnTermination: !Ref Ec2VolumeInuseCheckParamDeleteOnTermination
       Scope:
         ComplianceResourceTypes: [AWS::EC2::Volume]
       Source:
