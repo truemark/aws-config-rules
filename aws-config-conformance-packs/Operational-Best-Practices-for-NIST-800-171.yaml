@@ -139,6 +139,9 @@ Parameters:
   S3AwsPrincipals:
     Default: ''
     Type: String
+  S3ServicePrincipals:
+    Default: ''
+    Type: String
   S3ReplicationType:
     Default: ''
     Type: String
@@ -182,6 +185,7 @@ Conditions:
   s3LogTargetBucket: !Not [!Equals ['', !Ref S3LogTargetBucket]]
   s3LogTargetPrefix: !Not [!Equals ['', !Ref S3LogTargetPrefix]]
   s3AwsPrincipals: !Not [!Equals ['', !Ref S3AwsPrincipals]]
+  s3ServicePrincipals: !Not [!Equals ['', !Ref S3ServicePrincipals]]
   s3ReplicationType: !Not [!Equals ['', !Ref S3ReplicationType]]
 
 Resources:
@@ -1259,6 +1263,7 @@ Resources:
       ConfigRuleName: s3-bucket-policy-grantee-check
       InputParameters:
         awsPrincipals: !If [s3AwsPrincipals, !Ref S3AwsPrincipals, !Ref 'AWS::NoValue']
+        servicePrincipals: !If [s3ServicePrincipals, !Ref S3ServicePrincipals, !Ref 'AWS::NoValue']
       Scope:
         ComplianceResourceTypes: [AWS::S3::Bucket]
       Source:
